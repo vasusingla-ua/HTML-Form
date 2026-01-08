@@ -231,7 +231,7 @@
                 
                 <div class="form-group">
                     <label for="telephone">Telephone *</label>
-                    <input type="tel" id="telephone" name="telephone" placeholder="Enter your phone number" required pattern="[0-9+\-() ]{10,}">
+                    <input type="tel" id="telephone" name="telephone" placeholder="Enter your phone number" required pattern="[0-9]{10,}" inputmode="numeric" autocomplete="tel">
                 </div>
 
                 
@@ -261,6 +261,30 @@
         </div>
 
     <script>
+
+                document.getElementById('email').addEventListener('invalid', function(e) {
+                    
+                    const emailPattern = /^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$/;
+                    if (!emailPattern.test(this.value) || this.validity.valueMissing) {
+                        this.setCustomValidity('Enter a valid email address');
+                    } else {
+                        this.setCustomValidity('');
+                    }
+                });
+                document.getElementById('email').addEventListener('input', function(e) {
+                    this.setCustomValidity('');
+                });
+        
+        document.getElementById('telephone').addEventListener('invalid', function(e) {
+            if (this.validity.patternMismatch || this.validity.valueMissing) {
+                this.setCustomValidity('Enter a valid phone number');
+            } else {
+                this.setCustomValidity('');
+            }
+        });
+        document.getElementById('telephone').addEventListener('input', function(e) {
+            this.setCustomValidity('');
+        });
     const form = document.getElementById('registrationForm');
     const resultsSection = document.getElementById('resultsSection');
     const resultsBody = document.getElementById('resultsBody');
