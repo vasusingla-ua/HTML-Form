@@ -4,277 +4,131 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Registration Form</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Arial, sans-serif;
-            background: #f4f6f8;
-            margin: 0;
-            padding: 0;
-        }
-        .form-container {
-            max-width: 520px;
-            margin: 40px auto;
-            background: #fff;
-            border-radius: 10px;
-            box-shadow: 0 4px 24px rgba(0,0,0,0.08);
-            padding: 32px 28px 24px 28px;
-        }
-        h1 {
-            text-align: center;
-            color: #222;
-            margin-bottom: 28px;
-            font-size: 2rem;
-            font-weight: 600;
-        }
-        .form-group {
-            margin-bottom: 18px;
-        }
-        label {
-            display: block;
-            margin-bottom: 6px;
-            color: #333;
-            font-weight: 500;
-        }
-        input[type="text"],
-        input[type="email"],
-        input[type="tel"],
-        input[type="number"],
-        select,
-        textarea {
-            width: 100%;
-            padding: 10px 12px;
-            border: 1px solid #d1d5db;
-            border-radius: 5px;
-            font-size: 1rem;
-            background: #fafbfc;
-            margin-bottom: 2px;
-            transition: border-color 0.2s;
-        }
-        input[type="text"]:focus,
-        input[type="email"]:focus,
-        input[type="tel"]:focus,
-        input[type="number"]:focus,
-        select:focus,
-        textarea:focus {
-            border-color: #4f8cff;
-            outline: none;
-        }
-        textarea {
-            resize: vertical;
-            min-height: 70px;
-        }
-        .radio-group, .checkbox-group {
-            display: flex;
-            gap: 18px;
-            flex-wrap: wrap;
-        }
-        .radio-option, .checkbox-option {
-            display: flex;
-            align-items: center;
-        }
-        .radio-option label, .checkbox-option label {
-            margin-left: 4px;
-            font-weight: 400;
-        }
-        .error {
-            color: #d32f2f;
-            font-size: 13px;
-            margin-top: 2px;
-            display: none;
-        }
-        .error.show {
-            display: block;
-        }
-        button {
-            padding: 10px 28px;
-            font-size: 1rem;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: 600;
-            margin-right: 10px;
-            margin-top: 18px;
-            background: #4f8cff;
-            color: #fff;
-            transition: background 0.2s;
-        }
-        button#resetBtn {
-            background: #e0e0e0;
-            color: #333;
-        }
-        button#resetBtn:hover {
-            background: #bdbdbd;
-        }
-        button#submitBtn:hover {
-            background: #2563eb;
-        }
-        .hidden {
-            display: none;
-        }
-        #resultsSection {
-            margin-top: 36px;
-            background: #fff;
-            border-radius: 8px;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-            padding: 24px 18px 18px 18px;
-            max-width: 100%;
-            overflow-x: auto;
-            word-break: break-word;
-        }
-        #resultsSection h2 {
-            margin-bottom: 18px;
-            color: #222;
-            font-size: 1.2rem;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            background: #fafbfc;
-        }
-        table th, table td {
-            border: 1px solid #e0e0e0;
-            padding: 10px 12px;
-            text-align: left;
-            word-break: break-word;
-            max-width: 350px;
-        }
-        table th {
-            background: #4f8cff;
-            color: #fff;
-            font-weight: 600;
-        }
-        table tr:nth-child(even) {
-            background: #f4f6f8;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="form-container">
-        <h1>User Registration Form</h1>
+        <div class="form-header">
+            <div class="form-title">Personal Info</div>
+            <div class="form-subtitle">Update your personal details here</div>
+        </div>
         <form id="registrationForm">
-           
             <div class="form-group">
-                <label for="name">Name *</label>
-                <input type="text" id="name" name="name" placeholder="Enter your full name" required minlength="2">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" placeholder="Your name" required minlength="2">
             </div>
 
-                
-                <div class="form-group">
-                    <label for="age">Age *</label>
-                    <input type="number" id="age" name="age" placeholder="Enter your age" min="1" max="120" required>
-                </div>
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="Your email address" required>
+            </div>
 
-               
+            <div class="input-row">
                 <div class="form-group">
-                    <label>Gender *</label>
-                    <div class="radio-group">
-                        <div class="radio-option">
-                            <input type="radio" id="male" name="gender" value="Male" required>
-                            <label for="male">Male</label>
-                        </div>
-                        <div class="radio-option">
-                            <input type="radio" id="female" name="gender" value="Female">
-                            <label for="female">Female</label>
-                        </div>
-                        <div class="radio-option">
-                            <input type="radio" id="other" name="gender" value="Other">
-                            <label for="other">Other</label>
-                        </div>
+                    <label for="age">Age</label>
+                    <input type="number" id="age" name="age" placeholder="Your age" min="1" max="120" required>
+                </div>
+                <div class="form-group">
+                    <label for="telephone">Phone no.</label>
+                    <input type="tel" id="telephone" name="telephone" placeholder="Your phone no." required pattern="[0-9]{10,}" inputmode="numeric" autocomplete="tel">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="country">Country</label>
+                <select id="country" name="country" required>
+                    <option value="">Your country</option>
+                    <option value="India">India</option>
+                    <option value="USA">USA</option>
+                    <option value="Japan">Japan</option>
+                    <option value="China">China</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Gender</label>
+                <div class="radio-group">
+                    <div class="radio-option">
+                        <input type="radio" id="male" name="gender" value="Male" required>
+                        <label for="male">Male</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="female" name="gender" value="Female">
+                        <label for="female">Female</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="other" name="gender" value="Other">
+                        <label for="other">Other</label>
                     </div>
                 </div>
+            </div>
 
-                
-                <div class="form-group">
-                    <label for="country">Country *</label>
-                    <select id="country" name="country" required>
-                        <option value="">Select a country</option>
-                        <option value="India">India</option>                      
-                        <option value="USA">USA</option>
-                        <option value="Japan">Japan</option>
-                        <option value="China">China</option>
-                    </select>
-                </div>
-
-                
-                <div class="form-group">
-                    <label>Technological Stack *</label>
-                    <div class="checkbox-group">
-                        <div class="checkbox-option">
-                            <input type="checkbox" id="html" name="techStack" value="HTML">
-                            <label for="html">HTML</label>
-                        </div>
-                        <div class="checkbox-option">
-                            <input type="checkbox" id="css" name="techStack" value="CSS">
-                            <label for="css">CSS</label>
-                        </div>
-                        <div class="checkbox-option">
-                            <input type="checkbox" id="js" name="techStack" value="JS">
-                            <label for="js">JS</label>
-                        </div>
-                        <div class="checkbox-option">
-                            <input type="checkbox" id="react" name="techStack" value="React">
-                            <label for="react">React</label>
-                        </div>
-                        <div class="checkbox-option">
-                            <input type="checkbox" id="reactNative" name="techStack" value="React Native">
-                            <label for="reactNative">React Native</label>
-                        </div>
+            <div class="form-group">
+                <label>Tech Stack</label>
+                <div class="tech-stack-wrapper">
+                    <button type="button" class="tech-stack-button" id="techStackButton" >Your Tech Stack</button>
+                    <div class="tech-stack-dropdown" id="techStackDropdown">
+                        <label class="tech-checkbox">
+                            <input type="checkbox" name="techStack" value="HTML"> HTML
+                        </label>
+                        <label class="tech-checkbox">
+                            <input type="checkbox" name="techStack" value="CSS"> CSS
+                        </label>
+                        <label class="tech-checkbox">
+                            <input type="checkbox" name="techStack" value="JS"> JS
+                        </label>
+                        <label class="tech-checkbox">
+                            <input type="checkbox" name="techStack" value="React"> React
+                        </label>
+                        <label class="tech-checkbox">
+                            <input type="checkbox" name="techStack" value="React Native"> React Native
+                        </label>
                     </div>
                 </div>
+                <div id="techStackDisplay"></div>
+            </div>
 
-               
-                <div class="form-group">
-                    <label for="address">Address *</label>
-                    <textarea id="address" name="address" placeholder="Enter your address" required minlength="5"></textarea>
-                </div>
+            <div class="form-group">
+                <label for="address">Address</label>
+                <textarea id="address" name="address" placeholder="Your address" required minlength="5"></textarea>
+            </div>
 
-                
-                <div class="form-group">
-                    <label for="telephone">Telephone *</label>
-                    <input type="tel" id="telephone" name="telephone" placeholder="Enter your phone number" required pattern="[0-9]{10,}" inputmode="numeric" autocomplete="tel">
-                </div>
-
-                
-                <div class="form-group">
-                    <label for="email">Email *</label>
-                    <input type="email" id="email" name="email" placeholder="Enter your email address" required>
-                </div>
-
-                
+            <div class="button-row">
                 <button type="reset" id="resetBtn">Reset</button>
                 <button type="submit" id="submitBtn">Submit</button>
-            </form>
-            
-            <div class="hidden" id="resultsSection">
-                <h2 >Submitted Information</h2>
-                <table id="resultsTable">
-                    <thead>
-                        <tr>
-                            <th>Field</th>
-                            <th>Value</th>
-                        </tr>
-                    </thead>
-                    <tbody id="resultsBody">
-                    </tbody>
-                </table>
             </div>
+        </form>
+
+        <div class="hidden" id="resultsSection">
+            <h2>Submitted Information</h2>
+            <table id="resultsTable">
+                <thead>
+                    <tr>
+                        <th>Field</th>
+                        <th>Value</th>
+                    </tr>
+                </thead>
+                <tbody id="resultsBody">
+                </tbody>
+            </table>
         </div>
+    </div>
 
     <script>
+        // Custom validation for email
+        document.getElementById('email').addEventListener('invalid', function(e) {
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$/;
+            if (!emailPattern.test(this.value) || this.validity.valueMissing) {
+                this.setCustomValidity('Enter a valid email address');
+            } else {
+                this.setCustomValidity('');
+            }
+        });
+        document.getElementById('email').addEventListener('input', function(e) {
+            this.setCustomValidity('');
+        });
 
-                document.getElementById('email').addEventListener('invalid', function(e) {
-                    
-                    const emailPattern = /^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$/;
-                    if (!emailPattern.test(this.value) || this.validity.valueMissing) {
-                        this.setCustomValidity('Enter a valid email address');
-                    } else {
-                        this.setCustomValidity('');
-                    }
-                });
-                document.getElementById('email').addEventListener('input', function(e) {
-                    this.setCustomValidity('');
-                });
-        
+        // Custom validation for telephone
         document.getElementById('telephone').addEventListener('invalid', function(e) {
             if (this.validity.patternMismatch || this.validity.valueMissing) {
                 this.setCustomValidity('Enter a valid phone number');
@@ -285,44 +139,90 @@
         document.getElementById('telephone').addEventListener('input', function(e) {
             this.setCustomValidity('');
         });
-    const form = document.getElementById('registrationForm');
-    const resultsSection = document.getElementById('resultsSection');
-    const resultsBody = document.getElementById('resultsBody');
 
-    form.addEventListener('submit', function(e) {
-        
-        const techStackChecked = document.querySelectorAll('input[name="techStack"]:checked');
-        if (techStackChecked.length === 0) {
-            alert('Please select at least one technology in the Technological Stack.');
+        // Form submission
+        const form = document.getElementById('registrationForm');
+        const resultsSection = document.getElementById('resultsSection');
+        const resultsBody = document.getElementById('resultsBody');
+
+        form.addEventListener('submit', function(e) {
+            const techStackChecked = Array.from(document.querySelectorAll('input[name="techStack"]:checked')).map(el => el.value);
+            
+            if (techStackChecked.length === 0) {
+                alert('Please select at least one technology in the Technological Stack.');
+                e.preventDefault();
+                return;
+            }
+
             e.preventDefault();
-            return;
+            const techStackValues = techStackChecked.join(', ');
+            const formData = [
+                { field: 'Name', value: document.getElementById('name').value },
+                { field: 'Age', value: document.getElementById('age').value },
+                { field: 'Gender', value: document.querySelector('input[name="gender"]:checked').value },
+                { field: 'Country', value: document.getElementById('country').value },
+                { field: 'Technological Stack', value: techStackValues },
+                { field: 'Address', value: document.getElementById('address').value },
+                { field: 'Telephone', value: document.getElementById('telephone').value },
+                { field: 'Email', value: document.getElementById('email').value }
+            ];
+            resultsBody.innerHTML = '';
+            formData.forEach(item => {
+                const row = document.createElement('tr');
+                row.innerHTML = `<td>${item.field}</td><td>${item.value}</td>`;
+                resultsBody.appendChild(row);
+            });
+            resultsSection.classList.remove('hidden');
+        });
+
+        form.addEventListener('reset', function(e) {
+            setTimeout(() => {
+                updateTechStackDisplay();
+                document.getElementById('techStackDropdown').classList.remove('open');
+            }, 0);
+        });
+
+        // Tech Stack dropdown toggle
+        const techStackButton = document.getElementById('techStackButton');
+        const techStackDropdown = document.getElementById('techStackDropdown');
+        const techStackDisplay = document.getElementById('techStackDisplay');
+        const techStackCheckboxes = document.querySelectorAll('input[name="techStack"]');
+
+        techStackButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            techStackDropdown.classList.toggle('open');
+        });
+
+        function updateTechStackDisplay() {
+            const selected = Array.from(techStackCheckboxes)
+                .filter(cb => cb.checked)
+                .map(cb => cb.value);
+            
+            techStackDisplay.innerHTML = '';
+            selected.forEach(tech => {
+                const tag = document.createElement('div');
+                tag.textContent = tech;
+                techStackDisplay.appendChild(tag);
+            });
+
+            // Update button text
+            if (selected.length === 0) {
+                techStackButton.textContent = 'Select Tech Stack';
+            } else {
+                techStackButton.textContent = selected.length + ' selected';
+            }
         }
 
-        
-        e.preventDefault();
-        const techStackValues = Array.from(techStackChecked).map(el => el.value).join(', ');
-        const formData = [
-            { field: 'Name', value: document.getElementById('name').value },
-            { field: 'Age', value: document.getElementById('age').value },
-            { field: 'Gender', value: document.querySelector('input[name="gender"]:checked').value },
-            { field: 'Country', value: document.getElementById('country').value },
-            { field: 'Technological Stack', value: techStackValues },
-            { field: 'Address', value: document.getElementById('address').value },
-            { field: 'Telephone', value: document.getElementById('telephone').value },
-            { field: 'Email', value: document.getElementById('email').value }
-        ];
-        resultsBody.innerHTML = '';
-        formData.forEach(item => {
-            const row = document.createElement('tr');
-            row.innerHTML = `<td>${item.field}</td><td>${item.value}</td>`;
-            resultsBody.appendChild(row);
+        techStackCheckboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', updateTechStackDisplay);
         });
-        resultsSection.classList.remove('hidden');
-    });
 
-    form.addEventListener('reset', function() {
-        resultsSection.classList.add('hidden');
-    });
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.tech-stack-wrapper')) {
+                techStackDropdown.classList.remove('open');
+            }
+        });
     </script>
 </body>
 </html>
